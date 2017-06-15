@@ -11,6 +11,7 @@ public class Movie {
     private String userRating;
     private String releaseDate;
     private String language;
+    private String imageUrlText;
 
 
     public void setReleaseDate(String releaseDate) {
@@ -59,5 +60,13 @@ public class Movie {
 
     public String getLanguage() {
         return language;
+    }
+
+    public void setImageUrlText(String imageUrlText) {
+        this.imageUrlText = imageUrlText;
+    }
+
+    public String getImageUrlText() {
+        return imageUrlText;
     }
 }

@@ -56,7 +56,8 @@ public class StartActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         movieAdapter = new MovieAdapter(StartActivity.this, movies);
         recyclerView.setAdapter(movieAdapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(StartActivity.this));
+
 
         LoadJsonResponse();
     }
@@ -71,6 +72,8 @@ public class StartActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        String displayResponse = response.toString();
+                        Log.e(TAG, displayResponse);
                         JsonParser.parseMovie(response);
                         pDialog.hide();
                     }

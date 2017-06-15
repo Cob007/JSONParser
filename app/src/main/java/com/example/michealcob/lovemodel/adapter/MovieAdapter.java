@@ -31,12 +31,15 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public List<Movie> movies = Collections.emptyList();
     public static final String URL = "http://image.tmdb.org/t/p/w185/";
 
+    public interface MovieAdpaterOnClickHandler{
+        void onClick(String selectedMovie);
+    }
+
     public MovieAdapter(Context _context, List<Movie> _movies){
         this.context = _context;
         layoutInflater = LayoutInflater.from(_context);
         this.movies = _movies;
     }
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.layout_style, parent, false);
@@ -53,12 +56,14 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         myHolder.description.setText(currentMovie.getDescription());
         myHolder.rating.setText(currentMovie.getUserRating());
         myHolder.title.setText(currentMovie.getTitle());
+        //myHolder.imageUrlText.setText(currentMovie.getImageUrlText());
 
         /*
         * after getting the url i will add the link here
         * using picasso library
         * */
         String image_url = URL + currentMovie.getImageUrl();
+        myHolder.imageUrlText.setText(image_url);
         Log.d(TAG, image_url);
         Picasso.with(context).load(image_url).into(myHolder.imageView);
 
@@ -66,6 +71,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public int getItemCount() {
+        if(null == movies) return 0;
         return this.movies.size();
     }
 
@@ -76,11 +82,13 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         TextView rating;
         TextView title;
         ImageView imageView;
+        TextView imageUrlText;
 
 
         public MyHolder(View itemView) {
             super(itemView);
-            imageView = (ImageView) itemView.findViewById(R.id.iv_backDrop);
+            //imageView = (ImageView) itemView.findViewById(R.id.iv_backDrop);
+            imageUrlText = (TextView) itemView.findViewById(R.id.url);
 
         }
     }

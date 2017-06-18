@@ -28,7 +28,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private static final String TAG = "Image Url: ";
     private Context context;
     private LayoutInflater layoutInflater;
-    public List<Movie> movies = Collections.emptyList();
+    public List<Movie> movies;//= Collections.emptyList();
     public static final String URL = "http://image.tmdb.org/t/p/w185/";
 
     public interface MovieAdpaterOnClickHandler{

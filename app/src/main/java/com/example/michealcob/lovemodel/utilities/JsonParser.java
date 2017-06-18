@@ -2,6 +2,8 @@ package com.example.michealcob.lovemodel.utilities;
 
 
 
+import android.util.Log;
+
 import com.example.michealcob.lovemodel.model.Movie;
 
 import org.json.JSONArray;
@@ -37,6 +39,7 @@ public class JsonParser {
             }
             return movieList;
         } catch (JSONException e) {
+            Log.e("JSONException Error", "In JsonParser");
             e.printStackTrace();
             return null;
         }
